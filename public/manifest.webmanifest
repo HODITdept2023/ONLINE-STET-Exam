@@ -1,0 +1,56 @@
+{
+  "id": "/",
+  "name": "studeezone - STET Exam Preparation & Candidate Management",
+  "short_name": "studeezone",
+  "description": "Comprehensive STET exam preparation platform with 3,500+ questions, 30-question subject mocks, offline practice, and candidate management.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#ffffff",
+  "theme_color": "#0f172a",
+  "categories": ["education", "productivity"],
+  "icons": [
+    {
+      "src": "/pwa-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/pwa-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/pwa-maskable-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Mock Tests",
+      "short_name": "Mocks",
+      "description": "Take full STET 120-Q and 30-Q subject mock tests",
+      "url": "/?tab=mock-tests",
+      "icons": [{ "src": "/pwa-192x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Practice Bank",
+      "short_name": "Practice",
+      "description": "Practice verified STET 2026 questions with instant explanations",
+      "url": "/?tab=practice",
+      "icons": [{ "src": "/pwa-192x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Admin Hub",
+      "short_name": "Admin",
+      "description": "Admin Control Hub, candidate roster, and question bank vault",
+      "url": "/?tab=admin",
+      "icons": [{ "src": "/pwa-192x192.png", "sizes": "192x192" }]
+    }
+  ]
+}

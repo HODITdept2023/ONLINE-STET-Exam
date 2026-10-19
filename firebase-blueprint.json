@@ -1,0 +1,106 @@
+{
+  "entities": {
+    "CandidateProfile": {
+      "title": "CandidateProfile",
+      "description": "Candidate user profile with study progress, XP, streaks, track and subscription status",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique candidate profile ID or normalized email" },
+        "name": { "type": "string", "description": "Candidate full name" },
+        "email": { "type": "string", "description": "Candidate email address" },
+        "loginId": { "type": "string", "description": "Candidate login identifier" },
+        "phone": { "type": "string", "description": "Candidate phone number" },
+        "isLoggedIn": { "type": "boolean", "description": "Session active flag" },
+        "role": { "type": "string", "description": "User role: candidate or admin", "enum": ["candidate", "admin"] },
+        "targetExam": { "type": "string", "description": "Target exam title" },
+        "selectedExamTrack": { "type": "string", "description": "Selected exam track: prt, gt-maths-science, or gt-humanities" },
+        "streakDays": { "type": "number", "description": "Current consecutive study streak" },
+        "longestStreak": { "type": "number", "description": "Longest study streak achieved" },
+        "lastActiveDate": { "type": "string", "description": "ISO date of last active session" },
+        "totalXp": { "type": "number", "description": "Total XP earned across study sessions" },
+        "dailyStudyMinutes": { "type": "number", "description": "Daily study minutes tracked" },
+        "isPaid": { "type": "boolean", "description": "Pro subscription active flag" },
+        "paidStreams": { "type": "array", "description": "List of authorized course tracks" },
+        "trialDaysRemaining": { "type": "number", "description": "Trial days remaining" },
+        "updatedAt": { "type": "number", "description": "Timestamp of last modification" }
+      },
+      "required": ["email", "name", "role", "isPaid"]
+    },
+    "ClientRecord": {
+      "title": "ClientRecord",
+      "description": "Central authoritative candidate record managed by administrators",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique client record identifier" },
+        "name": { "type": "string", "description": "Candidate name" },
+        "email": { "type": "string", "description": "Candidate email" },
+        "loginId": { "type": "string", "description": "Login username or ID" },
+        "password": { "type": "string", "description": "Account password or access code" },
+        "phone": { "type": "string", "description": "Phone number" },
+        "targetExam": { "type": "string", "description": "Assigned target exam" },
+        "role": { "type": "string", "description": "User role", "enum": ["candidate", "admin"] },
+        "status": { "type": "string", "description": "Account status", "enum": ["trial", "active", "expired", "suspended"] },
+        "isPaid": { "type": "boolean", "description": "Whether Pro subscription is active" },
+        "trialDaysRemaining": { "type": "number", "description": "Days remaining on trial" },
+        "registeredAt": { "type": "number", "description": "Registration epoch timestamp" },
+        "lastLoginAt": { "type": "number", "description": "Last login epoch timestamp" },
+        "testsCompleted": { "type": "number", "description": "Number of completed mock tests" },
+        "avgScore": { "type": "number", "description": "Average test score percentage" },
+        "notes": { "type": "string", "description": "Administrator notes and payment records" },
+        "paidStreams": { "type": "array", "description": "Allocated course tracks" },
+        "selectedStream": { "type": "string", "description": "Stream category: primary, graduate-science, or graduate-social" },
+        "updatedAt": { "type": "number", "description": "Timestamp of last update" }
+      },
+      "required": ["email", "name", "status", "isPaid"]
+    },
+    "MockTestAttempt": {
+      "title": "MockTestAttempt",
+      "description": "Record of a completed mock test attempt",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique test attempt ID" },
+        "userEmail": { "type": "string", "description": "Email of candidate" },
+        "testId": { "type": "string", "description": "Test identifier" },
+        "track": { "type": "string", "description": "Exam track" },
+        "score": { "type": "number", "description": "Raw score obtained" },
+        "totalQuestions": { "type": "number", "description": "Total questions in test" },
+        "percentage": { "type": "number", "description": "Percentage score" },
+        "passed": { "type": "boolean", "description": "Whether passing score was achieved" },
+        "timestamp": { "type": "number", "description": "Attempt completion timestamp" }
+      },
+      "required": ["userEmail", "testId", "score", "totalQuestions"]
+    },
+    "AdminSettings": {
+      "title": "AdminSettings",
+      "description": "Global administration and payment configuration",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Setting document ID" },
+        "freeTierQuestionLimit": { "type": "number", "description": "Free question trial limit" },
+        "subscriptionPrice": { "type": "number", "description": "Pro subscription price" },
+        "gpayUpiId": { "type": "string", "description": "Admin UPI identifier" },
+        "gpayRecipientName": { "type": "string", "description": "Admin recipient name" },
+        "updatedAt": { "type": "number", "description": "Timestamp of last settings update" }
+      },
+      "required": ["freeTierQuestionLimit", "subscriptionPrice"]
+    }
+  },
+  "firestore": {
+    "/clients/{clientId}": {
+      "schema": { "$ref": "#/entities/ClientRecord" },
+      "description": "Central authoritative candidate and client directory records"
+    },
+    "/profiles/{profileId}": {
+      "schema": { "$ref": "#/entities/CandidateProfile" },
+      "description": "Real-time candidate profile states synchronized across devices"
+    },
+    "/attempts/{attemptId}": {
+      "schema": { "$ref": "#/entities/MockTestAttempt" },
+      "description": "Completed mock test attempts and scores"
+    },
+    "/settings/{settingId}": {
+      "schema": { "$ref": "#/entities/AdminSettings" },
+      "description": "Global platform configurations and payment parameters"
+    }
+  }
+}

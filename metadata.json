@@ -1,0 +1,7 @@
+{
+  "name": "studeezone",
+  "description": "Comprehensive STET exam preparation platform with 1,000+ questions per exam stream, 30 questions per subject mock tests, interactive study guides, community leaderboard, and 24/7 AI mentor.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+

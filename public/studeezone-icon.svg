@@ -1,0 +1,229 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <defs>
+    <!-- Background / Soft Shadow Filter -->
+    <filter id="soft-shadow" x="-10%" y="-10%" width="130%" height="130%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="16" stdDeviation="16" flood-color="#09357a" flood-opacity="0.22" />
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#09357a" flood-opacity="0.14" />
+    </filter>
+
+    <filter id="subtle-shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#002b75" flood-opacity="0.18" />
+    </filter>
+
+    <!-- Glossy Cap Gradients -->
+    <linearGradient id="cap-top-grad" x1="256" y1="110" x2="256" y2="230" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#3b8aff" />
+      <stop offset="45%" stop-color="#166fe8" />
+      <stop offset="100%" stop-color="#0b52cc" />
+    </linearGradient>
+
+    <linearGradient id="cap-edge-light" x1="130" y1="165" x2="380" y2="165" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#60a5fa" />
+      <stop offset="50%" stop-color="#93c5fd" />
+      <stop offset="100%" stop-color="#3b82f6" />
+    </linearGradient>
+
+    <linearGradient id="cap-depth-bevel" x1="256" y1="170" x2="256" y2="215" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0e4fb8" />
+      <stop offset="100%" stop-color="#062e75" />
+    </linearGradient>
+
+    <!-- Book Body Gradients -->
+    <linearGradient id="book-body-blue" x1="256" y1="200" x2="256" y2="345" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1d75f2" />
+      <stop offset="60%" stop-color="#0b5cd9" />
+      <stop offset="100%" stop-color="#0742a3" />
+    </linearGradient>
+
+    <linearGradient id="book-depth-bottom" x1="256" y1="320" x2="256" y2="345" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#083887" />
+      <stop offset="100%" stop-color="#031e4f" />
+    </linearGradient>
+
+    <!-- Pages White Gloss -->
+    <linearGradient id="page-left-grad" x1="250" y1="250" x2="190" y2="250" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#e2e8f0" />
+      <stop offset="25%" stop-color="#f8fafc" />
+      <stop offset="85%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#e6edf8" />
+    </linearGradient>
+
+    <linearGradient id="page-right-grad" x1="262" y1="250" x2="322" y2="250" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#e2e8f0" />
+      <stop offset="25%" stop-color="#f8fafc" />
+      <stop offset="85%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#e6edf8" />
+    </linearGradient>
+
+    <!-- Tassel Gradient -->
+    <linearGradient id="tassel-grad" x1="145" y1="180" x2="155" y2="265" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#3b8aff" />
+      <stop offset="70%" stop-color="#0d5fe0" />
+      <stop offset="100%" stop-color="#06398f" />
+    </linearGradient>
+
+    <!-- Text 3D Blue Gradient -->
+    <linearGradient id="text-blue-grad" x1="256" y1="375" x2="256" y2="415" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1e73ea" />
+      <stop offset="50%" stop-color="#0854cb" />
+      <stop offset="100%" stop-color="#03388c" />
+    </linearGradient>
+  </defs>
+
+  <!-- Ambient Base Glow -->
+  <ellipse cx="256" cy="345" rx="130" ry="18" fill="#0b3b85" opacity="0.18" filter="url(#soft-shadow)" />
+  <ellipse cx="256" cy="425" rx="170" ry="12" fill="#0b3b85" opacity="0.14" />
+
+  <!-- MAIN CAP & BOOK GROUP WITH 3D DROP SHADOW -->
+  <g filter="url(#soft-shadow)">
+    <!-- 3D Book Blue Base Frame & Thickness -->
+    <!-- Bottom Bevel / Extrusion of the Book and Cap Lower Mount -->
+    <path d="M 172 205
+             L 172 312
+             C 172 318, 178 324, 186 326
+             C 214 332, 238 344, 256 345
+             C 274 344, 298 332, 326 326
+             C 334 324, 340 318, 340 312
+             L 340 205
+             Z"
+          fill="url(#book-depth-bottom)" />
+
+    <!-- Book Outer Blue Shell -->
+    <path d="M 172 205
+             L 172 304
+             C 172 312, 178 318, 186 320
+             C 214 326, 238 338, 256 339
+             C 274 338, 298 326, 326 320
+             C 334 318, 340 312, 340 304
+             L 340 205
+             Z"
+          fill="url(#book-body-blue)" />
+
+    <!-- Mortarboard Cap 3D Thickness / Bottom Rim -->
+    <path d="M 136 178 
+             L 256 226 
+             L 376 178 
+             L 376 190 
+             C 376 193, 373 196, 368 198
+             L 258 242
+             C 256 243, 254 243, 252 242
+             L 142 198
+             C 138 196, 136 193, 136 190
+             Z"
+          fill="url(#cap-depth-bevel)" />
+
+    <!-- Mortarboard Cap Diamond Top -->
+    <path d="M 256 112 
+             C 258 112, 260 113, 262 114
+             L 374 168 
+             C 379 171, 379 176, 374 179
+             L 260 224 
+             C 258 225, 254 225, 252 224
+             L 138 179 
+             C 133 176, 133 171, 138 168
+             L 250 114 
+             C 252 113, 254 112, 256 112
+             Z" 
+          fill="url(#cap-top-grad)" />
+
+    <!-- Cap Top Specular Edge Highlight -->
+    <path d="M 256 114 
+             L 370 169 
+             L 256 220 
+             L 142 169 
+             Z" 
+          stroke="url(#cap-edge-light)" 
+          stroke-width="3" 
+          fill="none" 
+          opacity="0.65" />
+
+    <!-- Inner Book Cavity Dark Accent -->
+    <path d="M 188 202
+             L 188 300
+             C 214 306, 238 316, 254 318
+             L 254 202
+             Z"
+          fill="#052c6e" opacity="0.3" />
+
+    <path d="M 324 202
+             L 324 300
+             C 298 306, 274 316, 258 318
+             L 258 202
+             Z"
+          fill="#052c6e" opacity="0.3" />
+
+    <!-- Left Book Page (White 3D) -->
+    <path d="M 252 204
+             C 240 203, 206 196, 192 201
+             C 190 202, 188 204, 188 207
+             L 188 297
+             C 188 299, 190 301, 192 301
+             C 208 298, 238 306, 252 316
+             Z"
+          fill="url(#page-left-grad)"
+          filter="url(#subtle-shadow)" />
+
+    <!-- Right Book Page (White 3D) -->
+    <path d="M 260 204
+             C 272 203, 306 196, 320 201
+             C 322 202, 324 204, 324 207
+             L 324 297
+             C 324 299, 322 301, 320 301
+             C 304 298, 274 306, 260 316
+             Z"
+          fill="url(#page-right-grad)"
+          filter="url(#subtle-shadow)" />
+
+    <!-- Center Book Spine Crease -->
+    <path d="M 256 202 L 256 322" stroke="#cbd5e1" stroke-width="3" stroke-linecap="round" />
+
+    <!-- Page Subtle Text Line Engravings -->
+    <path d="M 202 225 C 215 223, 235 226, 244 231" stroke="#e2e8f0" stroke-width="2.5" stroke-linecap="round" />
+    <path d="M 202 242 C 215 240, 235 243, 244 248" stroke="#e2e8f0" stroke-width="2.5" stroke-linecap="round" />
+    <path d="M 202 259 C 215 257, 235 260, 244 265" stroke="#e2e8f0" stroke-width="2.5" stroke-linecap="round" />
+    <path d="M 202 276 C 215 274, 235 277, 244 282" stroke="#e2e8f0" stroke-width="2.5" stroke-linecap="round" />
+
+    <path d="M 268 231 C 277 226, 297 223, 310 225" stroke="#e2e8f0" stroke-width="2.5" stroke-linecap="round" />
+    <path d="M 268 248 C 277 243, 297 240, 310 242" stroke="#e2e8f0" stroke-width="2.5" stroke-linecap="round" />
+    <path d="M 268 265 C 277 260, 297 257, 310 259" stroke="#e2e8f0" stroke-width="2.5" stroke-linecap="round" />
+    <path d="M 268 282 C 277 277, 297 274, 310 276" stroke="#e2e8f0" stroke-width="2.5" stroke-linecap="round" />
+
+    <!-- Tassel (Left side hanging) -->
+    <!-- Tassel Button on Cap -->
+    <ellipse cx="256" cy="168" rx="6" ry="3.5" fill="#166fe8" />
+    <ellipse cx="256" cy="167" rx="4" ry="2" fill="#93c5fd" />
+
+    <!-- Tassel Cord from center to left -->
+    <path d="M 256 168 C 200 172, 160 178, 151 184" 
+          stroke="#0b52cc" stroke-width="3" fill="none" stroke-linecap="round" />
+    <path d="M 151 184 L 151 216" 
+          stroke="#0b52cc" stroke-width="3.5" fill="none" stroke-linecap="round" />
+
+    <!-- Tassel Small Ring/Bead -->
+    <ellipse cx="151" cy="217" rx="5" ry="4" fill="#2575fc" />
+    <ellipse cx="150" cy="216" rx="2" ry="1.5" fill="#93c5fd" />
+
+    <!-- Tassel Bell / Fringe -->
+    <path d="M 148 220 
+             L 142 248 
+             C 142 253, 146 256, 151 256 
+             C 156 256, 160 253, 160 248 
+             L 154 220 
+             Z" 
+          fill="url(#tassel-grad)" 
+          filter="url(#subtle-shadow)" />
+    <!-- Tassel highlight -->
+    <path d="M 149 223 L 146 248" stroke="#93c5fd" stroke-width="1.5" stroke-linecap="round" opacity="0.8" />
+  </g>
+
+  <!-- "studeezone.com" 3D BLUE TYPOGRAPHY -->
+  <g filter="url(#subtle-shadow)">
+    <text x="256" y="405" 
+          text-anchor="middle" 
+          fill="url(#text-blue-grad)" 
+          font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Outfit', 'Plus Jakarta Sans', 'Segoe UI', Roboto, sans-serif" 
+          font-size="38" 
+          font-weight="900" 
+          letter-spacing="-0.5">studeezone.com</text>
+  </g>
+</svg>

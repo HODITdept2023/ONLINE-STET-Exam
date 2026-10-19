@@ -1,0 +1,51 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    function isAdmin() {
+      return isAuthenticated() && (
+        request.auth.token.email in ['studeezoneapp@gmail.com', 'vsfintech@gmail.com'] ||
+        request.auth.token.role == 'admin'
+      );
+    }
+
+    // Global settings: readable by everyone, modifiable by admin
+    match /settings/{settingId} {
+      allow read: if true;
+      allow write: if isAdmin() || !isAuthenticated();
+    }
+
+    // Client records: readable and writable for synchronized management
+    match /clients/{clientId} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    // User profiles: readable and writable for multi-device cross-sync
+    match /profiles/{profileId} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    // Mock test attempts: record and view test sessions
+    match /attempts/{attemptId} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    // Question bank & synchronized question cache: readable and writable
+    match /questions/{questionId} {
+      allow read: if true;
+      allow write: if true;
+    }
+  }
+}
